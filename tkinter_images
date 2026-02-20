@@ -1,0 +1,39 @@
+import tkinter as tk
+from PIL import Image, ImageTk
+
+# create window
+root = tk.Tk()
+root.title("Tkinter Image Demo")
+root.geometry("500x400")
+
+# ===== Load Images =====
+
+header_img = Image.open("bg2.jpg")
+header_img = header_img.resize((400, 100))
+header_photo = ImageTk.PhotoImage(header_img)
+
+icon_img = Image.open("UFO_icon.png")
+icon_img = icon_img.resize((100, 100))
+icon_photo = ImageTk.PhotoImage(icon_img)
+
+btn_img = Image.open("blueB.png")
+btn_img = btn_img.resize((100,50))
+btn_photo = ImageTk.PhotoImage(btn_img)
+
+# ===== Header Image =====
+header_label = tk.Label(root, image=header_photo)
+header_label.pack(pady=10)
+
+# ===== Image Label =====
+image_label = tk.Label(root, image=icon_photo)
+image_label.pack(pady=10)
+
+# ===== Button with Image =====
+def clicked():
+    print("Button clicked!")
+
+img_button = tk.Button(root, image=btn_photo, command=clicked, borderwidth=0)
+img_button.pack(pady=10)
+
+# keep window running
+root.mainloop()
