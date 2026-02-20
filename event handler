@@ -1,0 +1,28 @@
+import tkinter as tk
+
+def left_click(event):
+    label.config(text="Left Mouse Click")
+
+def right_click(event):
+    label.config(text="Right Mouse Click")
+
+def key_pressed(event):
+    label.config(text=f"Key Pressed: {event.char}")
+
+def mouse_move(event):
+    label.config(text=f"Mouse at ({event.x}, {event.y})")
+
+root = tk.Tk()
+root.title("Event Handler Demo")
+root.geometry("400x300")
+
+label = tk.Label(root, text="Perform an action", font=("Arial", 14))
+label.pack(pady=40)
+
+# bind events
+root.bind("<Button-1>", left_click)     # left click
+root.bind("<Button-3>", right_click)    # right click
+root.bind("<Key>", key_pressed)         # key press
+root.bind("<Motion>", mouse_move)       # mouse movement
+
+root.mainloop()
